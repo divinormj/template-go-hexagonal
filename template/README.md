@@ -54,9 +54,9 @@ template/
 #### Swagger
 [Swagger](https://swagger.io/) is an API documentation tool that allows you to describe, consume, and visualize RESTful web services interactively. It provides a graphical interface that makes it easier to understand and use the API, allowing developers to test endpoints directly from the browser.
 
-Neste template foi usado o framework Gin e a implementação do swagger foi utilizando a [gin-swagger](https://github.com/swaggo/gin-swagger).
+In this template, the Gin framework was used, and the Swagger implementation was done using [gin-swagger](https://github.com/swaggo/gin-swagger).
 
-Para iniciar o swagger e gerar a documentação pode rodar o seguinte comando, onde -g indica o arquivo com onde está 'swagger general API Info' e o -d indica a partir de qual pasta procurar por funções que tenham anotações swagger.
+To start Swagger and generate the documentation, you can run the following command, where -g indicates the file with the 'swagger general API Info' and -d indicates the folder from which to search for functions with Swagger annotations.
 ```bash
 swag init -g ./swagger/swagger.go -d ./internal/adapters/entrypoints
 ```
@@ -65,7 +65,7 @@ swag init -g ./swagger/swagger.go -d ./internal/adapters/entrypoints
 
 ### Prerequisites
 
-- Go 1.16 or higher
+- Go 1.23 or higher
 - Docker and Docker Compose
 
 ### Installation
