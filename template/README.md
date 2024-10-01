@@ -5,7 +5,7 @@ This project serves as a template for creating new API projects. It provides a s
 ## Architecture
 
 The project follows the principles of Hexagonal Architecture, which promotes separation of concerns and independence of frameworks. The main components of the architecture are organized as follows:
-
+```
 template/
 ├── cmd/                                # Entry point of the application
 │    └── myapi/
@@ -39,6 +39,7 @@ template/
 ├── go.mod                              # Go module definition 
 ├── go.sum                              # Go module dependencies 
 └── README.md                           # Project documentation
+```
 
 ### Components
 
