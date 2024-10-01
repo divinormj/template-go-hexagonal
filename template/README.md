@@ -51,7 +51,7 @@ template/
 - **Entrypoints**: Manages incoming requests and responses. This layer includes controllers and presenters (DTOs and mappers).
 
 
-#### Swagger
+## Swagger
 [Swagger](https://swagger.io/) is an API documentation tool that allows you to describe, consume, and visualize RESTful web services interactively. It provides a graphical interface that makes it easier to understand and use the API, allowing developers to test endpoints directly from the browser.
 
 In this template, the Gin framework was used, and the Swagger implementation was done using [gin-swagger](https://github.com/swaggo/gin-swagger).
@@ -81,6 +81,34 @@ go run cmd/myapi/main.go
 
 ### Usage
 You can access the API at http://localhost:8080.
+
+### Testes
+
+Este projeto utiliza a biblioteca de testes `stretchr/testify` e a ferramenta de geração de mocks `Mockery` para garantir a qualidade e a confiabilidade do código.
+
+#### stretchr/testify
+
+[stretchr/testify](https://github.com/stretchr/testify) é uma biblioteca popular para Go que fornece um conjunto de assertivas e utilitários que facilitam a escrita de testes. 
+
+#### Mockery
+Mockery é uma ferramenta que gera mocks automaticamente a partir de interfaces em Go. Isso permite que você crie mocks consistentes e atualizados sem precisar implementar manualmente cada método. A geração de mocks é feita por comando, por exemplo:
+
+```bash
+mockery --name=EntityGateway --dir=internal/domain/gateways --output=internal/domain/gateways/mocks --outpkg=mocks
+```
+
+#### Executar os testes
+Para executar os testes de todas as pastas a partir da raiz, pode rodar o comando:
+
+```bash
+go test ./...
+```
+
+Para uma pasta específica:
+
+```bash
+go test ./internal/domain/usecases
+```
 
 ### Contributing
 Feel free to submit issues, fork the repository, and make pull requests. Contributions are welcome!
