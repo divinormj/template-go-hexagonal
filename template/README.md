@@ -84,27 +84,28 @@ You can access the API at http://localhost:8080.
 
 ### Testes
 
-Este projeto utiliza a biblioteca de testes `stretchr/testify` e a ferramenta de geração de mocks `Mockery` para garantir a qualidade e a confiabilidade do código.
+This project uses the `stretchr/testify` testing library and the `Mockery` mock generation tool to ensure code quality and reliability.
 
 #### stretchr/testify
 
-[stretchr/testify](https://github.com/stretchr/testify) é uma biblioteca popular para Go que fornece um conjunto de assertivas e utilitários que facilitam a escrita de testes. 
+[stretchr/testify](https://github.com/stretchr/testify) is a popular library for Go that provides a set of assertions and utilities that make writing tests easier.
 
 #### Mockery
-Mockery é uma ferramenta que gera mocks automaticamente a partir de interfaces em Go. Isso permite que você crie mocks consistentes e atualizados sem precisar implementar manualmente cada método. A geração de mocks é feita por comando, por exemplo:
+Mockery is a tool that automatically generates mocks from Go interfaces. This allows you to create consistent and up-to-date mocks without manually implementing each method. The mock generation is done via command, for example:
 
 ```bash
 mockery --name=EntityGateway --dir=internal/domain/gateways --output=internal/domain/gateways/mocks --outpkg=mocks
 ```
 
-#### Executar os testes
-Para executar os testes de todas as pastas a partir da raiz, pode rodar o comando:
+#### Running the tests
+To run the tests from all folders starting from the root, you can use the command:
+
 
 ```bash
 go test ./...
 ```
 
-Para uma pasta específica:
+For a specific folder:
 
 ```bash
 go test ./internal/domain/usecases
