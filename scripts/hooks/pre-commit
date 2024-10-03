@@ -1,0 +1,13 @@
+#!/bin/sh
+# scripts/hooks/pre-commit
+
+echo "Running unit tests..."
+
+# Run the tests
+go test ./...
+if [ $? -ne 0 ]; then
+    echo "Tests failed. Fix the errors before continuing."
+    exit 1
+fi
+
+echo "All tests passed."

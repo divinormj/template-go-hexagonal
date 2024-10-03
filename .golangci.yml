@@ -1,0 +1,16 @@
+# .golangci.yml
+linters:
+  enable:
+    - revive
+    - staticcheck
+    - ineffassign
+    - unused
+  disable:
+    - gocyclo
+
+issues:
+  exclude-use-default: false
+
+run:
+  tests: false
+  timeout: 5m

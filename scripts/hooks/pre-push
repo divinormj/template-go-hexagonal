@@ -1,0 +1,13 @@
+#!/bin/sh
+# scripts/hooks/pre-push
+
+echo "Running linting..."
+
+# Run the lint
+golangci-lint run
+if [ $? -ne 0 ]; then
+    echo "Linting failed. Please fix the errors before continuing."
+    exit 1
+fi
+
+echo "Linting passed."
