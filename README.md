@@ -7,38 +7,40 @@ This project serves as a template for creating new API projects. It provides a s
 The project follows the principles of Hexagonal Architecture, which promotes separation of concerns and independence of frameworks. The main components of the architecture are organized as follows:
 ```
 template-go-hexagonal/
-├── cmd/                                # Entry point of the application
+├── cmd/                               # Entry point of the application
 │    └── myapi/
 │       └── main.go                 
-├── configs/                            # Configuration files
-├── deploy/                             # Deployment scripts and configurations
-├── docs/                               # Documentation files 
-├── internal/                           # Internal packages
+├── configs/                           # Configuration files
+├── deploy/                            # Deployment scripts and configurations
+├── docs/                              # Documentation files 
+├── internal/                          # Internal packages
 │   ├── adapters/
-│   │   ├── entrypoints/                # Entry points for HTTP API
-│   │   │   └── v1/                     # DTOs and Mappers
-│   │   │       ├── presenters/         # DTOs and Mappers
-│   │   │       │   └── ...dto.go       # Example DTO definition
-│   │   │       │   └── ...mapper.go    # Example Mapper
-│   │   │       └── ...controller.go    # HTTP Controller for API endpoints
-│   │   ├── mongodb/                    # MongoDB specific implementations
-│   │   │   ├── presenters/             # DTOs and Mappers
-│   │   │   │   ├── ...dto.go           # MongoDB DTO
-│   │   │   │   └── ...mapper.go        # MongoDB Mapper
-│   │   │   └── ...repository.go        # MongoDB repository implementation
+│   │   ├── entrypoints/               # Entry points for HTTP API
+│   │   │   └── v1/                    # DTOs and Mappers
+│   │   │       ├── presenters/        # DTOs and Mappers
+│   │   │       │   └── ...dto.go      # Example DTO definition
+│   │   │       │   └── ...mapper.go   # Example Mapper
+│   │   │       └── ...controller.go   # HTTP Controller for API endpoints
+│   │   ├── mongodb/                   # MongoDB specific implementations
+│   │   │   ├── presenters/            # DTOs and Mappers
+│   │   │   │   ├── ...dto.go          # MongoDB DTO
+│   │   │   │   └── ...mapper.go       # MongoDB Mapper
+│   │   │   └── ...repository.go       # MongoDB repository implementation
 │   │   └── ... 
-│   ├── dependency-injection/           # Dependency injection containers
+│   ├── dependency-injection/          # Dependency injection containers
 │   │   └── ...container.go
-│   ├── domain/                         # Domain layer
-│   │ ├── entities/                     # Business entities
-│   │ │     └── entity.go               # Example entity definition
-│   │ ├── gateways/                     # Interfaces for external services, such as APIs, databases, and other services.
-│   │ │     └── ...gateway.go           # Example gateway interface
-│   │ └── usecases/                     # Application logic
-│   │       └── entity_usecase.go       # Example use case
-├── go.mod                              # Go module definition 
-├── go.sum                              # Go module dependencies 
-└── README.md                           # Project documentation
+│   ├── domain/                        # Domain layer
+│   │ ├── entities/                    # Business entities
+│   │ │     └── entity.go              # Example entity definition
+│   │ ├── gateways/                    # Interfaces for external services, such as APIs, databases, and other services.
+│   │ │     └── ...gateway.go          # Example gateway interface
+│   │ └── usecases/                    # Application logic
+│   │       └── entity_usecase.go      # Example use case
+├── scripts                            # Scripts for development or test environment configurations.
+├── tests                              # Integration tests only.
+├── go.mod                             # Go module definition 
+├── go.sum                             # Go module dependencies 
+└── README.md                          # Project documentation
 ```
 
 ### Components
@@ -49,6 +51,7 @@ template-go-hexagonal/
 - **Deploy**: IaaS, PaaS, orchestration system and container deployment configurations and templates (kubernetes/helm, mesos, terraform, bosh).
 - **Domain Layer**: Contains the business logic and rules. It defines entities, gateways, and use cases.
 - **Entrypoints**: Manages incoming requests and responses. This layer includes controllers and presenters (DTOs and mappers).
+- **Tests**: Integration tests only, unit tests are located with the code files.
 
 ## Swagger
 [Swagger](https://swagger.io/) is an API documentation tool that allows you to describe, consume, and visualize RESTful web services interactively. It provides a graphical interface that makes it easier to understand and use the API, allowing developers to test endpoints directly from the browser.
@@ -103,13 +106,25 @@ To run the tests from all folders starting from the root, you can use the comman
 
 
 ```bash
-go test ./...
+go test ./internal/...
 ```
 
 For a specific folder:
 
 ```bash
 go test ./internal/domain/usecases
+```
+
+### Integration
+Integration tests are performed through HTTP calls, the flow should follow the real code end-to-end of the application, only external dependencies should be mocked.
+The naming of the test folders follows the route and not the implementation folders.
+For database dependencies, a test database will be created, which runs in a Docker container during test execution. The configuration to create the test database is in the file `tests/v1/entities/integration_test.go`.
+
+To run the integration tests, you can use the following command:
+
+
+```bash
+go test -v ./tests/v1/entities
 ```
 
 ## Development Tools
@@ -152,7 +167,7 @@ chmod +x ./scripts/hooks/setup-hooks.sh # Makes the script executable (only the 
 ./scripts/hooks/setup-hooks.sh          # Runs the script
 ```
 
-### Contributing
+## Contributing
 Feel free to submit issues, fork the repository, and make pull requests. Contributions are welcome!
 
-### License
+## License

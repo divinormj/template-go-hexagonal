@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27071:27017"  # Mapeia a porta 27071 no host para a porta 27017 no contêiner
+    networks:
+      - test-network
+
+networks:
+  test-network:
