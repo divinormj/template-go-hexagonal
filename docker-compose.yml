@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mongodb:
@@ -11,6 +11,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - mongodb_data:/data/db
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 no host para a porta 5432 no contêiner
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: postgres_db # O nome do banco de dados que será criado
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persistência de dados
 
 volumes:
   mongodb_data:
+  pgdata:

@@ -3,7 +3,6 @@ package entities
 import (
 	"bytes"
 	"encoding/json"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	v1 "template/internal/adapters/entrypoints/v1"
@@ -19,7 +18,6 @@ import (
 
 func TestCreateEntityEndpoint(t *testing.T) {
 	defer CleanupDatabase(t)
-	log.Printf("=== Iniciando TestCreateEntityEndpoint...")
 	// Given that the database is configured and active
 	// And that all dependencies have been started
 	repository := mongodb.NewEntityRepository(MongoClient, "test_db")
@@ -57,7 +55,6 @@ func TestCreateEntityEndpoint(t *testing.T) {
 func TestCreateEntityMissingName(t *testing.T) {
 	defer CleanupDatabase(t)
 	// Given that the database is configured and active
-	log.Printf("=== Iniciando TestCreateEntityMissingName...")
 	// And that all dependencies have been started
 	repository := mongodb.NewEntityRepository(MongoClient, "test_db")
 	useCase := usecases.NewCreateEntityUseCase(repository)

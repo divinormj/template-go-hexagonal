@@ -1,0 +1,16 @@
+# Binaries
+/build/
+
+# Go specific files
+*.exe
+
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Temporary files
+*~
+*.tmp

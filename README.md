@@ -73,11 +73,17 @@ swag init -g ./swagger/swagger.go -d ./internal/adapters/entrypoints
 ### Installation
 
 1. Clone the repository.
-2. Run data base using doker-compose.
-3. And run the application:
 
+2. Install all dependencies.
+```bash
+go mod tidy
+```
+3. Run data base using doker-compose.
 ```bash
 docker compose up -d
+```
+4. And run the application:
+```bash
 go run cmd/myapi/main.go
 ```
 
@@ -122,9 +128,13 @@ For database dependencies, a test database will be created, which runs in a Dock
 
 To run the integration tests, you can use the following command:
 
-
 ```bash
 go test -v ./tests/v1/entities
+```
+
+## Migrations
+```bash
+migrate create -ext=sql -dir=internal/migrations -seq timestamp -format [entity]_[action]
 ```
 
 ## Development Tools
