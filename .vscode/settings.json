@@ -1,5 +1,17 @@
 {
   "go.lintTool": "golangci-lint",
   "go.lintOnSave": "file",
-  "go.formatTool": "goimports"
+  "go.formatTool": "goimports",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "template_db",
+      "database": "postgres_db",
+      "username": "root",
+      "password": "example"
+    }
+  ]
 }

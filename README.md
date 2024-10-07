@@ -132,11 +132,6 @@ To run the integration tests, you can use the following command:
 go test -v ./tests/v1/entities
 ```
 
-## Migrations
-```bash
-migrate create -ext=sql -dir=internal/migrations -seq timestamp -format [entity]_[action]
-```
-
 ## Development Tools
 
 ### Official Go Plugin for VSCode
@@ -175,6 +170,11 @@ The project includes a script that automatically sets up Git hooks. To run it, u
 ```bash
 chmod +x ./scripts/hooks/setup-hooks.sh # Makes the script executable (only the first time)
 ./scripts/hooks/setup-hooks.sh          # Runs the script
+```
+
+### Debug
+```bash
+go install -v github.com/go-delve/delve/cmd/dlv@latest
 ```
 
 ## Contributing

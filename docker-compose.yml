@@ -19,8 +19,10 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: example
       POSTGRES_DB: postgres_db # O nome do banco de dados que será criado
+      POSTGRES_INITDB_ARGS: "--data-checksums"
     volumes:
       - pgdata:/var/lib/postgresql/data # Persistência de dados
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   mongodb_data:
